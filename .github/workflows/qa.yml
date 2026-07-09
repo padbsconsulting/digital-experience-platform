@@ -1,0 +1,42 @@
+name: QA
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Config validation
+        run: pnpm run validate:config
+
+      - name: Syntax checks
+        run: pnpm run check:js
+
+      - name: Static QA
+        run: pnpm run qa:static
+
+      - name: Browser smoke QA
+        run: pnpm run qa:browser

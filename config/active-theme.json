@@ -1,0 +1,154 @@
+{
+  "activeThemeId": "ferreteria",
+  "themeFolder": "themes/ferreteria",
+  "themeContractFile": "themes/ferreteria/theme.js",
+  "accessKey": "padbs7",
+  "languages": ["es", "en"],
+  "activeHtmlPages": [
+    {
+      "file": "index.html",
+      "themePageId": "executive",
+      "expectedTitles": {
+        "es": "Panorama del negocio",
+        "en": "Business overview"
+      },
+      "expectedCharts": ["salesTrendChart", "operatingMixChart", "branchPerfChart"]
+    },
+    {
+      "file": "inventory.html",
+      "themePageId": "inventory",
+      "expectedTitles": {
+        "es": "Inventario y rotación",
+        "en": "Inventory and turnover"
+      },
+      "expectedCharts": ["stockByCategoryChart", "turnoverChart"]
+    },
+    {
+      "file": "quotes.html",
+      "themePageId": "quotes",
+      "expectedTitles": {
+        "es": "Cotización a venta",
+        "en": "Quote to sale"
+      },
+      "expectedCharts": ["quotesPrimaryChart"]
+    },
+    {
+      "file": "credit.html",
+      "themePageId": "credit",
+      "expectedTitles": {
+        "es": "Clientes y crédito",
+        "en": "Customers and credit"
+      },
+      "expectedCharts": ["creditPrimaryChart"]
+    },
+    {
+      "file": "suppliers.html",
+      "themePageId": "suppliers",
+      "expectedTitles": {
+        "es": "Compras y suplidores",
+        "en": "Purchasing and suppliers"
+      },
+      "expectedCharts": ["suppliersPrimaryChart"]
+    },
+    {
+      "file": "dispatch.html",
+      "themePageId": "dispatch",
+      "expectedTitles": {
+        "es": "Despacho y sucursales",
+        "en": "Dispatch and branches"
+      },
+      "expectedCharts": ["dispatchPrimaryChart"]
+    },
+    {
+      "file": "launch.html",
+      "themePageId": "launch",
+      "expectedTitles": {
+        "es": "PADBS 7-Day Launch",
+        "en": "PADBS 7-Day Launch"
+      },
+      "expectedCharts": []
+    }
+  ],
+  "requiredCoreAssets": [
+    "core/styles.css",
+    "core/access.css",
+    "core/i18n.js",
+    "core/access.js",
+    "core/app.js",
+    "core/charts.js"
+  ],
+  "requiredThemeAssets": [
+    "themes/ferreteria/theme.css",
+    "themes/ferreteria/theme.js"
+  ],
+  "syntaxCheckFiles": [
+    "core/app.js",
+    "core/access.js",
+    "core/charts.js",
+    "core/i18n.js",
+    "scripts/validate-config.js",
+    "scripts/check-js.js",
+    "scripts/qa-static.js",
+    "scripts/qa-browser.js"
+  ],
+  "assetPathPrefixes": ["core/", "themes/ferreteria/"],
+  "accessGateAssets": ["core/access.css", "core/access.js"],
+  "forbiddenCopyChecks": [
+    {
+      "name": "Padel House copy must not appear in active theme",
+      "target": "theme",
+      "patterns": [
+        "Padel",
+        "p[aá]del",
+        "Bullpadel",
+        "\\bNox\\b",
+        "racket",
+        "palas?",
+        "cancha",
+        "Padel Club"
+      ]
+    }
+  ],
+  "domainVocabularyBoundaryChecks": [
+    {
+      "name": "Active theme business vocabulary must not appear in /core",
+      "target": "core",
+      "patterns": [
+        "Ferreter",
+        "hardware store",
+        "M[oó]nica",
+        "cemento",
+        "varilla",
+        "\\bPVC\\b",
+        "cotiz",
+        "suplidor",
+        "despacho",
+        "sucursal",
+        "Constructora",
+        "Maestro Joel",
+        "Construmax"
+      ]
+    }
+  ],
+  "fictionalDataPosture": {
+    "requiredSignals": [
+      "ficticios",
+      "fictional",
+      "no real customer",
+      "no contiene datos reales"
+    ],
+    "forbiddenRiskyPatterns": [
+      "trial real data",
+      "use real customer data",
+      "using real customer data",
+      "usar datos reales de clientes",
+      "utilizar datos reales de clientes"
+    ],
+    "signalPaths": [
+      "i18n.es.brand.mockData",
+      "i18n.en.brand.mockData",
+      "i18n.es.access.modal.securityNote",
+      "i18n.en.access.modal.securityNote"
+    ]
+  }
+}

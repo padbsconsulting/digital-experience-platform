@@ -1,0 +1,38 @@
+:root {
+  --color-bg: #f0eee8;
+  --color-sidebar: #17140f;
+  --color-sidebar-hover: #241f17;
+  --color-sidebar-active: #332a1d;
+  --color-primary: #3f5e3b;
+  --color-primary-light: #6e8f54;
+  --color-accent: #d6a84f;
+  --color-coral: #b45c35;
+  --color-text: #201b14;
+  --color-text-muted: #71695f;
+  --color-border: #ded7cc;
+}
+
+.brand-icon {
+  font-size: 1.2rem;
+}
+
+.demo-banner {
+  background:
+    linear-gradient(120deg, rgba(23,20,15,0.98), rgba(63,94,59,0.96) 52%, rgba(119,78,34,0.96)),
+    linear-gradient(90deg, transparent, rgba(214,168,79,0.16));
+}
+
+.demo-banner::before {
+  content: "";
+  position: absolute;
+  inset: auto 28px 20px auto;
+  width: 160px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  transform: rotate(-8deg);
+}
+
+.card, .kpi-card, .action-card {
+  border-color: rgba(63, 94, 59, 0.12);
+}

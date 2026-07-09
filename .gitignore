@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+*.log
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+.nyc_output/
+.cache/

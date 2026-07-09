@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://padbs.local/schemas/themes.schema.json",
+  "title": "PADBS Active Theme QA Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activeThemeId",
+    "themeFolder",
+    "themeContractFile",
+    "accessKey",
+    "languages",
+    "activeHtmlPages",
+    "requiredCoreAssets",
+    "requiredThemeAssets",
+    "syntaxCheckFiles",
+    "assetPathPrefixes",
+    "accessGateAssets",
+    "forbiddenCopyChecks",
+    "domainVocabularyBoundaryChecks",
+    "fictionalDataPosture"
+  ],
+  "properties": {
+    "activeThemeId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "themeFolder": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "themeContractFile": {
+      "$ref": "#/$defs/javascriptFile"
+    },
+    "accessKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "languages": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "es" },
+        { "const": "en" }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "activeHtmlPages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["file", "themePageId", "expectedTitles", "expectedCharts"],
+        "properties": {
+          "file": {
+            "$ref": "#/$defs/htmlFile"
+          },
+          "themePageId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "expectedTitles": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["es", "en"],
+            "properties": {
+              "es": {
+                "type": "string",
+                "minLength": 1
+              },
+              "en": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "expectedCharts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/domId"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "requiredCoreAssets": {
+      "$ref": "#/$defs/pathArray"
+    },
+    "requiredThemeAssets": {
+      "$ref": "#/$defs/pathArray"
+    },
+    "syntaxCheckFiles": {
+      "$ref": "#/$defs/pathArray"
+    },
+    "assetPathPrefixes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[^\\\\]+/$"
+      },
+      "uniqueItems": true
+    },
+    "accessGateAssets": {
+      "$ref": "#/$defs/pathArray"
+    },
+    "forbiddenCopyChecks": {
+      "$ref": "#/$defs/checkArray"
+    },
+    "domainVocabularyBoundaryChecks": {
+      "$ref": "#/$defs/checkArray"
+    },
+    "fictionalDataPosture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredSignals", "forbiddenRiskyPatterns", "signalPaths"],
+      "properties": {
+        "requiredSignals": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "forbiddenRiskyPatterns": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "signalPaths": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^(?:[A-Za-z]:|/|\\\\|.*\\.\\..*)"
+      }
+    },
+    "htmlFile": {
+      "allOf": [
+        { "$ref": "#/$defs/relativePath" },
+        {
+          "type": "string",
+          "pattern": "\\.html$"
+        }
+      ]
+    },
+    "javascriptFile": {
+      "allOf": [
+        { "$ref": "#/$defs/relativePath" },
+        {
+          "type": "string",
+          "pattern": "\\.js$"
+        }
+      ]
+    },
+    "domId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+    },
+    "pathArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/relativePath"
+      },
+      "uniqueItems": true
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "checkArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "target", "patterns"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "enum": ["theme", "core", "all"]
+          },
+          "patterns": {
+            "$ref": "#/$defs/nonEmptyStringArray"
+          }
+        }
+      }
+    }
+  }
+}

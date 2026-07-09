@@ -1,0 +1,17 @@
+{
+  "name": "padbs-digital-experience-platform-industry-themes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reusable PADBS Digital Experience Platform industry theme demos.",
+  "scripts": {
+    "validate:config": "node scripts/validate-config.js",
+    "check:js": "node scripts/check-js.js",
+    "qa:static": "node scripts/qa-static.js",
+    "qa:browser": "node scripts/qa-browser.js",
+    "qa": "pnpm run validate:config && pnpm run check:js && pnpm run qa:static && pnpm run qa:browser"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "playwright": "^1.55.0"
+  }
+}
