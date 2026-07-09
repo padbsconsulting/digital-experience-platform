@@ -25,6 +25,12 @@ It helps a hardware store owner visualize operational modernization across inven
 
 This is a commercial consulting demo, not an ERP product and not a CRUD admin system.
 
+Live demo:
+
+```text
+https://demo.padbs.com/
+```
+
 ## PADBS 7-Day Launch
 
 The active experience is positioned to support a PADBS 7-Day Launch conversation:
@@ -138,6 +144,14 @@ After pushing to GitHub:
 3. Set **Source** to **Deploy from a branch**.
 4. Select the deployment branch, usually `main`.
 5. Select the root folder `/`.
+
+The current production custom domain is:
+
+```text
+https://demo.padbs.com/
+```
+
+GitHub Pages serves the same static files from the repository root, so local paths must remain relative for compatibility with both the custom domain and the repository URL.
 6. Save.
 7. Open the generated GitHub Pages URL and run a quick manual check:
    - access gate opens
