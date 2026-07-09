@@ -1,8 +1,21 @@
 # PADBS Digital Experience Platform
 
-Reusable demo factory for PADBS Consulting commercial digital experiences.
+A reusable framework for building premium, industry-specific digital experiences that help organizations visualize operational transformation before implementation.
 
 This repository turns the validated Padel House Digital Experience pattern into a reusable platform where the Core Framework stays shared and each Industry Theme supplies the business story, bilingual copy, fictional data, visual identity, and domain-specific scenarios.
+
+Core capabilities include:
+
+- shared application framework
+- industry themes
+- bilingual ES/EN experience
+- GitHub Pages deployment
+- access gate
+- storytelling-driven navigation
+- business KPIs
+- ROI conversations
+- automated QA
+- theme architecture
 
 ## Current Active Theme
 
